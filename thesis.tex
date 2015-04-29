@@ -49,7 +49,7 @@ This Thesis represents my own work in accordance with University Regulations.
 
 \chapter{Background}
 
-\subsection{Brain-Computer Interfaces}
+\section{Brain-Computer Interfaces}
 	
 	\begin{figure}[t]
 		\includegraphics[width=8cm]{startrek}
@@ -63,29 +63,28 @@ This Thesis represents my own work in accordance with University Regulations.
 	
 	In addition to spanning several physical mediums, BCIs have evolved for a variety of applications, allowing users to spell\cite{Kaper}, control robotic arms\cite{Chae}, and even compose music\cite{Yao} with only their minds.  Of particular interest to us is applications in EEG biofeedback, also known as Neurofeedback.  Voltages oscillate along the scalp at frequencies that relate to various human mental state.  For example, gamma waves which occur at above 30Hz are thought to relate to focused attention and in binding information across various parts of the brain together, whereas slower alpha brainwaves (8--12 Hz) are associated with relaxation\cite{Hammond}.  Early BCI research in the late 1960s and 1970s showed that humans could learn, using neurofeedback, to increase their alpha  brainwaves for the purpose of relaxation, and explored how neurofeedback might aid in treatments of epilepsy; since then, neurofeedback therapy applications have expanded to include treatment for ADHD and ADD, cognitive and memory enhancement, rehabilitation for traumatic brain injuries, treatment for alcoholism and substance abuse, post--traumatic stress disorder, anxiety, depression, insomnia... and the list goes on\cite{Hammond}.  Results for some neurofeedback applications are more robust than others, and in particular, ADHD and ADD treatment research has been widely active over the past ten years.  
 
-\subsection{Attention Training}
+\section{Attention Training}
 
 	Attention training, both for individuals with attentional disorders and for those without, has been explored far beyond the domain of neurofeedback.  For example, meditation and mindfulness, physical exercise, walks through nature, and even playing video games can improve sustained attention\cite{TurkBrowne}.  However, because attention is known to have correlates in EEG data, neurofeedback holds potential as treatment method that addresses the mental substrates of attention directly.
-	Several studies have found evidence that particular frequency bands of EEG data relate to attention.  Ray et al\cite{Ray} studied EEG signals that reflect attention to internal and external tasks (recognizing faces versus mental arithmetic, for example), and found that alpha activity predicted whether a participant was focusing on an internal or external attentional task.  
+	
+	Several studies have found evidence that particular frequency bands of EEG data relate to attention.  Ray et al\cite{Ray} studied EEG signals that reflect attention to internal and external tasks (recognizing faces versus mental arithmetic, for example), and found that alpha activity predicted whether a participant was focusing on an internal or external attentional task.  Furthermore, patients with ADHD 
 
-\subsection{Attention Training}
+\section{Attention Training}
 	EEG neurofeedback training for sustained attention has been of particular interest in serving as a treatment for ADHD.  A 2012 review\cite{Lofthouse} of 14 such treatments found that the feedback was ``probably efficacious'' but found that most experiments suffered from design flaws.  Most studies examined theta/beta frequencies with a single electrode placed at Cz according to the 10-20 electrode system, and gave participants neurofeedback through a video game.  The theoretical motivation for such analyses comes from the fact that many patients with ADHD have shown stronger power in the theta and slow-wave frequencies than controls, and less beta power in the central and frontal regions.  Indeed, several studies\cite{Barry} have found that EEG analyses of these frequency ranges can predict the presence of ADHD in patients with accuracies above 85\%.  A limitation of such vigilance-based attention analyses is that it does not distinguish between a participant being focused in general, and being focused on a target task at hand. {\bf TBD}
 	
-\subsection{Machine Learning for EEG/fMRI Data}
+\section{Machine Learning for EEG/fMRI Data}
 	Traditionally, fMRI and EEG analyses have attempted to relate data to behavior either by associating blood-oxygen-level-dependeng (BOLD) signal activation in a known brain region of interest with a target behavior (in the case of fMRI)\cite{Schnyer}, or by associating activation in known frequency bands with behavior (in the case of EEG).  In contrast, machine learning techniques that have been highly fruitful in domains including object, handwriting, and speech recognition system, discover relationships between input data and its categories by fitting a model from a given model class to data in a way that minimizes the error of that model on the data.  As a result, machine learning techniques can find representations and mappings of large, high-dimensional data sets that are more subtle than what a human being could predict by examining the data through traditional techniques alone.  Indeed, the application of machine learning techniques to fMRI data---often called multi-voxel pattern analysis or MVPA---has thus been highly fruitful\cite{Norman}.  For example, Kamitani et al. \cite{Kamitani} used MVPA to understand how line orientation is represented in the visual cortex, a phenomenon which occurs at cortical columns at the sub-voxel scale.   Using MVPA (particularly support vector machines), they were able to recognize brain activity associated with orientation of gratings, even though this phenomenon occurs beyond the resolution of fMRI, by taking advantage of the patterns of voxel activation spread throughout the visual cortex.  
 		
 	Machine learning techniques have also proved useful for EEG data analysis, and today classification techniques are the most popular data interpretation technique for Brain-Computer Interfaces (BCIs)\cite{Lotte}.  Within this domain, several threads of research have explored methods of feature selection for EEG BCIs, studying how features composed of EEG voltage values\cite{Kaper} , power spectral densities/frequency decompositions\cite{Herman}, and dimensionality reduction techniques\cite{Kachenoura} might improve EEG classification.  Additionally, the use of different types of classifiers has been explored in EEG BCI research, with the most widely used types of classifiers being linear classifiers (including Linear Discriminant Analysis and Support Vector Machines) and neural networks\cite{Lotte}.  As a measure of the accuracy of these techniques, consider a study by Peters et al\cite{Peters}, which used artificial neural networks on 56--channel EEG data to detect when subjects planned to perform three types of motion (left and right index finger movement and right foot movement), achieving 92-99\% accuracy for three participants tested.  More details on feature selection and classification techniques can be found in section \ref{dataanalysis}.  
 
-\subsection{Real-Time EEG BCI's}
-Research in EEG-based BCI's is very active, particularly in the domain of assistive technology.  It is a prime candidate for assisting sufferers of motor paralysis, because it is not only inexpensive but also nonintrusive compared to, say, electrocortiography-based (ECoG) BCI's in which electrodes are placed directly on the surface of a patient's brain.  For example, the Thought-Translational Device (TTD)\cite{Birbaumer} was an EEG-based BCI that allowed ALS patients to select letters from a screen by modulating Slow Cortical Potentials (SCPs).  Patients learned to modulate SCPs via operant conditioning provided by the TTD system, training over the course of six months to six years.  On average, the participants were able to communicate with a speed of about one word per minute.  
-
 \chapter{Contributions}
-	Our experiment is inspired largely by deBettencourt et al.\cite{deBettencourt}, 	who conducted a similar study using fMRI-based rather than EEG-based feedback.  In both experiments, participants viewed superimposed pictures of faces and places, and received feedback based on classifier confidence.  Past attentional training experiments have used alpha power as a metric for attention, but we find this approach problematic because the feedback relates only to general “vigilance” of a participant, and has no knowledge of to what subject a participant’s vigilance is attending.  Our feedback, on the other hand, is directly tied to the content of a participant’s thoughts.
+	Our experiment is inspired largely by deBettencourt et al.\cite{deBettencourt}, 	who conducted a similar study using fMRI-based rather than EEG-based feedback.  In both experiments, participants viewed superimposed pictures of faces and places, and received feedback based on classifier confidence.  Past attentional training experiments have used alpha power as a correlate of attention, but we find this approach problematic because the feedback depends only to general “vigilance” of a participant without discretion to what subject a participant’s vigilance is attending.  This experiment attempts to Our feedback, on the other hand, is directly tied to the content of a participant’s thoughts.
+	
 	While similar in approach to deBettencourt et al.'s method of feedback, this work uses EEG rather than fMRI technology, which is both wildly less expensive than fMRI as well as more portable and accessible than fMRI.
 
 \chapter{Experiment Setup}
 
-\subsection{Definitions}
+\section{Definitions}
 \begin{table}[h]
 \begin{tabular}{p{4cm}|p{10cm}}
 \textbf{Trial}  & a 50 second long interval in which a single face/place pair is displayed to the participant  \\
@@ -104,7 +103,7 @@ Research in EEG-based BCI's is very active, particularly in the domain of assist
 \end{tabular}
 \end{table}
 
-\subsection{Setup}
+\section{Setup}
 	\begin{wrapfigure}{r}{0pt}
 	
 	\includegraphics[width=6cm]{faceplace}	
@@ -121,7 +120,7 @@ Research in EEG-based BCI's is very active, particularly in the domain of assist
 
 In order to run this experiment, we created a software stack to coordinate data collection from the EEG headset along with showing participants stimuli, collection participant responses, and analyzing the collected data in real time.  The EEG headset chosen for this experiment was the Epoc Emotiv, as described below.  The software framework for coordinating the experiment, Nueromancer, was built in many languages and consists of many interchangeable modules, also described below.
 
-\subsection{Epoc Emotiv}
+\section{Epoc Emotiv}
 	\begin{wrapfigure}{l}{0pt}
 		\includegraphics[width=6cm]{emotiv}	
 		\centering
@@ -134,7 +133,7 @@ In order to run this experiment, we created a software stack to coordinate data 
 	
 	At least a handful of psychology experiments have used the Emotiv, including several from Princeton Senior Theses (\cite{Rafidi}, \cite{Adelson}, and of course this thesis)!  Additionally, Duvinage et al.\cite{Duvinage} explored the performance of the Emotiv for classifying P300 signals, an event-related potential that occurs roughly 300 milliseconds after a participant sees an ``oddball'' stimulus in a sequence of stimuli\cite{p300}.  Duvinage found that the Emotiv performs significantly worse than a medical grade EEG device, and recommend its use only in situations in which reliability and a high signal-to-noise ratio are non-critical.
 	
-\subsection{Neuromancer Overview}
+\section{Neuromancer Overview}
 \begin{figure*}
 \centerline{
 \includegraphics[width=12cm]{neuromancer_anatomy}
@@ -144,7 +143,7 @@ In order to run this experiment, we created a software stack to coordinate data 
 
 The Neuromancer software stack consists of three parts: the experiment GUI, data analysis server, and experiment controller.  The experiment GUI displays images to the participant and records participant responses.  The data analysis server analyzes collected data, creates a model, and classifies data used for real-time feedback.  The experiment controller coordinates collecting EEG data, controlling the experiment GUI, and writing responses and metadata to file.
 
-\subsection{Experiment Controller}The Neuromancer experiment controller was written as Java (so chosen because the Emotiv API was available in Java).  At its start, the controller creates a thread dedicated to polling the Emotiv for data.  It continually writes this data to file using a buffered writing structure.  This logging thread exposes methods to the main controller thread for starting, pausing, and stopping data collection.  The logging thread starts logging when the participant is shown the first block of the experiment, and stopped when the experiment ends.
+\section{Experiment Controller}The Neuromancer experiment controller was written as Java (so chosen because the Emotiv API was available in Java).  At its start, the controller creates a thread dedicated to polling the Emotiv for data.  It continually writes this data to file using a buffered writing structure.  This logging thread exposes methods to the main controller thread for starting, pausing, and stopping data collection.  The logging thread starts logging when the participant is shown the first block of the experiment, and stopped when the experiment ends.
   In addition to running data collection in the background, the experiment controller coordinates the evolution of the experiment through its phases. That is, the controller guides the experiment's transition from pre-training to stable to feedback to post-training phase, as well as the transition from block to block and trial to trial.   
 
 The design of the experiment controller, which is the core of the Neuromancer software stack, was built with as a compromise between flexibility and practicality.  At its core, it conducts the experiment via a DFA inner class as explained below.  Future users wishing to modify Neuromancer for their own experiments can do so by modifying this DFA inner class.  
@@ -169,26 +168,26 @@ A DFA or deterministic finite automaton is a deterministic finite state machine.
 	}
 \end{lstlisting}
 
-\subsection{Graphical User Interface}
+\section{Graphical User Interface}
 	The user interface in this experiment was built to run in a web browser, which is in this case Google Chrome.  Writing a browser-based experiment interface yields many potential advantages over more specialized, language-specific GUI frameworks.  For one, many templates exist both for the layout components of a browser interface (HTML templates, for example) as well as for the code that might control the browser interface.  Second, because Google Chrome (and any other browser) executes Javascript code the same way on every hardware device, essentially any computer that can run a browser can run the Neuromancer GUI.  The experiment participant may log responses to the experiment stimuli from any computer that is capable of running a browser, or even a tablet or mobile device.  Finally, although not implemented in Neuromancer, using the browser as a display lends itself easily to mirrored applications, where, for example, the experimenter might desire access to stimuli that the participant is viewing, even if the experimenter and participant are not using the same computer.
 
 	In Neuromancer, the experiment GUI consists of a simple HTML layout and Javascript program.  The “brain” of the GUI is the Java Experiment controller, as described above.  The Javascript program opens a Websocket\cite{websocket} that communicates with Java via a light-weight TCP protocol.  It displays images in the location and at the opacity described by the controller.
 
-\subsection{Data Analysis Server}
+\section{Data Analysis Server}
 	Python was chosen as the data analysis language for this experiment.  While Matlab is a standard language for EEG/BCI analysis, Python provides several advantages over Matlab.  First, Python is free and open source.  Second, it is unique amongst many programming languages in that it is both a general purpose language, but also well-suited for data analysis and machine learning.  On the one hand, libraries like Numpy, Scipy\cite{scipy}, and Scikit-Learn\cite{sklearn} all used extensively in this project, make array manipulations and statistical/machine learning analysis easy and fast.  In fact, many of these toolkits are implementations of Matlab functions for Python!  Conversely, it is much more difficult to build web tools like a TCP server in Matlab than it is in Python (in fact, this is a pay-for Matlab add-on library!). 	The Data Analysis Server for this experiment was built as a Python TCP server.  This server listened on a predetermined port for connections made from the Java Experiment Controller.  Throughout the course of the experiment, Java creates two types of connection with the Data Analysis Server: a ``data line'' is created when the Java data logging thread—-the thread that continually polls the Emotiv for readings—-sends a ``data'' message to the Python server.  After this connection is accepted, Java writes every value it reads from the Emotiv to the Python Data Analysis server.  	Additionally, the Java Experiment Controller opens a ``control line'' with Python by sending a ``control'' message.  Python acknowledges two types of commands on the control line.  Java sends Python a {\bf model} command to instruct the Data Analysis Server to create a model based on a journal file name and EEG data file name that Java passes to Python along with the command.  When Python finishes building a model, it sends Java an acknowledgement, and starts to store in memory Emotiv measurements written from the data line.  Subsequently, the Java control line may send Python a {\bf pred} command along with a timestamp indicating the start time of the current trial.  Upon receiving such a command, Python uses the provided timestamp to identify the correct data to feed into its previously created model.  If such data exists, Python makes a prediction based on the data and returns the prediction to Java.  Importantly, Java also informs Python when it has started a new experiment block, at which point Python empties its in-memory EEG data store.  Limiting the size of the data Python stores in memory at any time is important for keeping response times low.  	With its current design, the Python and Java programs are designed to run on the same machine within the same working directory.  However, by simply storing the journal and EEG data files in a network-mounted directory, we can allow the Python and Java programs to run on different computers.  Such a setup might be useful if, for example, we would like to run our data collection program on a local computer while performing computationally expensive Python data processing on a remote computer.
 
 
 \chapter{Data Analysis Techniques \label{dataanalysis}}
 
-\subsection{Introduction to EEG Data}
-\subsection{EEG Preprocessing}
+\section{Introduction to EEG Data}
+\section{EEG Preprocessing}
 
 
-\subsubsection{Time Binning}
+\subsection{Time Binning}
 	In order to preserve timing information in EEG data classification, data in all analyses were time binned.  That is, values were calculated over all points in a time bin, and averaged over that time bin.  For example, we might analyze data by chunking it into 100 millisecond time bins, and train a unique classifier for each millisecond offset from the stimulus onset.
 	
 	
-\subsubsection{Frequency Band Analysis}
+\subsection{Frequency Band Analysis}
 	One of the most common features to consider when analyzing EEG data are frequency components of the data.  For example, known frequencies falling in the alpha, beta, delta, theta and gamma frequency bands are known to relate to psychological phenomena like vigilance or REM sleep.   Fourier decompositions, which represent time series data in a basis of sines and cosines of varying frequencies, are perhaps the most common technique in signal processing for analyzing signal frequency makeup.  Unfortunately, Fourier decompositions only yield entirely meaningful results when their input signal is a periodic function.   If this is not the case, as with EEG data, then the Fourier decomposition describing time points near the temporal boundaries of the input signal will be distorted—that is, the transform will only be meaningful in the temporal middle of the input signal.  As a result, Fourier decomposition does not property capture the quick frequency evolution we expect to see in EEG signals.  
 
 \begin{figure}[t]
@@ -232,15 +231,15 @@ A DFA or deterministic finite automaton is a deterministic finite state machine.
 	
 	
 	
-\subsubsection{Removing Baseline Signal}
+\subsection{Removing Baseline Signal}
 	When a subject begins a trial, they experience a reaction to the shown stimulus which we posit decays over the course of the 1,000 millisecond trial.  In order to remove the "baseline" signal which represents the participant's EEG signal after stimulus response has decayed, we subtract the average voltage on all of the channels over the last 80 milliseconds of the preceding trial from the current trial.  Doing so slightly improved performance for time binned analysis.
 	
-\subsection{Machine Learning Classifiers}
-\subsubsection{Logistic Regression with Penalization}
+\section{Machine Learning Classifiers}
+\subsection{Logistic Regression with Penalization}
 
 A logistic regression is a simple linear model which takes as input n-dimensional training points and labels, and models the relationship between input vectors and labels as {\bf tbd}
 
-\subsubsection{Support Vector Machines}
+\subsection{Support Vector Machines}
 
 \begin{figure}[t]
 \centering
@@ -267,7 +266,7 @@ A logistic regression is a simple linear model which takes as input n-dimensiona
 
 	We begin by visually inspecting the average voltages across all face/place trials of three participants, as shown in figure \ref{3partsfaceplace}.  These three participants were chosen because they showed the highest classifiability when analyzed in section \ref{timebin}.  The vertical red line denotes the time point 300 milliseconds after stimulus onset, which where the P300 EPR (as discussed below) occurs.  Visual inspection alone does not give an obvious explanation for the difference between these trials, but does show a faint 2-3 Hz signal in most cases.  This suggests that frequency analysis, especially focusing on the delta band (0-4 Hz), might prove fruitful.
 
-\subsection{Simple Time Bin Analysis \label{timebin}}
+\section{Simple Time Bin Analysis \label{timebin}}
 
 	In this experiment, we assume that a participant's mental response to a shown stimulus is time-locked.  Event-Related Potentials (ERPs), for example, are common EEG signals that occur as voltage changes at fixed times after a stimuli is shown.  Thus, we would like to analyze data in such a way that preserves temporal information about EEG signal.  Perhaps the simplest method of preserving time information is to analyze data in time bins.  In the analysis shown in figure \ref{nfoldsimple}, data from eleven participants was extracted at various offsets from the stimulus onset over various bin widths.  For each (stimulus offset, time bin) pair, a model was trained for each participant over this data.  In particular, the features of the model consisted of the average voltages over each of the fourteen channels, starting at time \textbf{stimulus-offset} and ending at time \textbf{stimulus-offset + binwidth}.  Features were then z-scored across channels, so that the resulting 14-dimensional feature vectors represented the relative magnitude of voltages of the channels relative to one another.  Thus a single feature vector was created for each trial, resulting in 50 features per block $\times$ 30 blocks per participant.  The labels for each of these features was the category (faces or places) the participant was instructed to attend to. For each participant and (\textbf{ stimulus-offset}, \textbf{binwidth}) pair, a Logistic Regression model with L2 penalization was trained and evaluated over 12 folds.  The data for each participant represented 30 minutes of viewing overlaid images of faces and places at 50/50 opacity.
 
@@ -288,7 +287,7 @@ A logistic regression is a simple linear model which takes as input n-dimensiona
 \caption{15-Fold classifier accuracy over various bin widths and offsets after stimuli using wavelet decomposition as features, 12 participants.\label{luresvsnonlures300}}
 \end{figure}
 
-\subsection{Wavelet Time Bin Analysis}
+\section{Wavelet Time Bin Analysis}
 
 \begin{figure}[t]
 \centerline{
@@ -300,7 +299,7 @@ A logistic regression is a simple linear model which takes as input n-dimensiona
 
 	A similar analyses as in section \ref{timebin} was conducted, using time bins and Logistic Regression to classify data.  In this analysis, however, EEG data was processed into a series of wavelets before being broken into time bins for classification.  In particular, each channel was decomposed into 10 frequency bands logarithmically spaced from 0.5 Hz to 60 Hz.  The resulting feature vector was 14 $\times$ 10 dimensional (10 frequencies for each channel), representing the power of each channel in each of 10 frequency ranges averaged over a time bin.  Figure \ref{wavelet_gridsearch} shows that this wavelet decomposition performed very near chance over all time bins.
 
-\subsection{Hilbert Transform Analysis}  
+\section{Hilbert Transform Analysis}  
 
 \begin{figure}[t]
 \centerline{
@@ -310,11 +309,7 @@ A logistic regression is a simple linear model which takes as input n-dimensiona
 \end{figure}
 
 
-\subsection{Component Analysis}
-
-Time permitting, I may explore classification accuracy using PCA components (jeremey suggestion).
-
-\subsection{Classifiers}
+\section{Classifiers}
 
 \begin{figure}[t]
 \centerline{
@@ -325,7 +320,7 @@ Time permitting, I may explore classification accuracy using PCA components (jer
 
 Figure \ref{classifiers} shows the performance of different classifiers on data form 12 participants.  Features were constructed as in section \ref{timebin}, using a stimulus offset of 280 milliseconds and binwidth of 90 milliseconds.  In general, the classifiers perform within a close range of one another, with the Linear SVM classifier in general performing the best.  This is consistent with findings by\cite{Lotte}.
 
-\subsection{Classification Accuracy versus Participant Accuracy}
+\section{Classification Accuracy versus Participant Accuracy}
 
 	A major hypothesis of this experiment was the notion that classifier accuracy is correlated with a subject's ability to focus intently on faces while ignoring places, or the reverse.  Consider, for example, an SVM that divides face/place data points as shown below.  We predict that a participant who can concentrate well on the face/place task produces EEG readings that are separable by some learning algorithm, in this case an SVM hyperplane.  We further predict that when a participant is concentrating poorly, his/her EEG readings lie closer to the hyperplane i.e. face/place concentration boundary than when he/she is focusing intently on one category or the other, due to ``noise'' from concentration on the competing category. 
 
@@ -349,13 +344,13 @@ Figure \ref{classifiers} shows the performance of different classifiers on data 
 
 	This results did not show a strong relationship between classifier confidence between false alarm and correct rejection trials.
 
-\subsection{Realtime Feedback}
+\section{Realtime Feedback}
 
-\begin{figure}[t]
+\begin{wrapfigure}{l}{0pt}
 \centering
-\includegraphics[width=4.5in]{sigmoidcurve}
-\caption{Sigmoid curve maps classifier confidence differences to image opacity values, ensuring that opacity is scaled appropriately to the range of classifier confidence read by the Emotiv\label{sigmoid}}
-\end{figure}
+\includegraphics[width=3.5in]{sigmoidcurve}
+\caption{Sigmoid curve maps classifier confidence differences to image opacity values.\label{sigmoid}}
+\end{wrapfigure}
 
 	A core goal of this experiment was to study how well humans can learn to control their sustained attention using feedback generated on the basis of the content of their thoughts.  In this experiment, training was achieved by altering the opacity of the target category image on the basis of the participant's level of concentration on that category.  Because of its simplicity, we chose to provide participants with feedback calculated on the basis of a logistic regression classifier with L2 regularization, calculated on a z-scored, 100 ms time bin that began 100 ms after stimulus onset.  These parameters were chosen based on a small sample set of early participants; a more accurate way to have chosen parameters would have been to choose the best time bin and offset for a participant on-the-fly, but this would have introduced programming complexity.  The code for the calculation of this feedback can be found in the Appendix.  The exact face/place image ratio for the feedback was calculated by looking at the classifier confidence calculated for the trial preceding the current trial.  This classifier confidence fell between a range of 1 for perfect concentration on the target category, and -1 for perfect concentration on the distractor category.  Because difference in classifier confidence was usually quite small ($< 0.01$), the difference was amplified via the function shown in Figure \ref{sigmoid}.  The target category image opacity was allowed to reach 0.9, but was never allowed to fall below 0.3.  
 
@@ -374,11 +369,24 @@ Figure \ref{avgfeedbacktrial} shows the average feedback over trials a single pa
 \caption{Participant performance on pre-test and post-test (9 minutes of data per test), before and after receiving feedback. \label{accprepost}}
 \end{figure}
 
-	We analyzed the accuracy of participants during lure trials pre and post feedback to evaluate the effects feedback on participants, as shown in Figure \ref{accprepost}.  Accuracy was measured as ($\frac{|\text{ correct rejection }|}{|\text{ false alarm }| + |\text{ correct rejection }|}$).  Pre-feedback results represents the data collected before the participant began the EEG-based portion of the experiment (the first 10 minutes of the experiment).  Post-feedback data was collected the day following feedback training.  Both pre and post feedback were collected over 10 minutes, but the first 1 minute of collection (the first trial) was excluded in both cases.  Participants on average improved in accuracy by 6.4 percent, with a p value of 0.32.  This improvement is not statistically significant partially due to a small effect size and small sample size.  Note that prior studies (pending citation from Megan) show that on average, participants do not improve at this task aver training.
+	We analyzed the accuracy of participants during lure trials pre and post feedback to evaluate the effects feedback on participants, as shown in Figure \ref{accprepost}.  Accuracy was measured as ($\frac{|\text{ correct rejection }|}{|\text{ false alarm }| + |\text{ correct rejection }|}$).  Pre-feedback results represents the data collected before the participant began the EEG-based portion of the experiment (the first 10 minutes of the experiment).  Post-feedback data was collected the day following feedback training.  Both pre and post feedback were collected over 10 minutes, but the first 1 minute of collection (the first trial) was excluded in both cases.  Participants on average improved in accuracy by 6.4 percent, with a p value of 0.32.  This improvement is not statistically significant partially due to a small effect size and small sample size.  However, \cite{deBettencourt} found that participants performing the same face/place classification task over three days who did not receive feedback decreased in accuracy by an average of -0.004 and standard deviation of 0.04.  
 
 \chapter{Conclusions}
 
+	The goals of this thesis were severalfold; from a software engineering perspective, we hoped to develop a versatile, modular framework for running realtime BCI experiments using the Emotiv, which was built on free, open source software.  The Neuromancer package, although far from perfect, meets many of these requirements.  From a hardware perspective, this thesis attempted to explore the quality of data derived from the Emotiv, and whether this data was robust enough to decoded by modern EEG analysis techniques.  Although the Emotiv clearly cannot produce data of the same quality as a medical--grade EEG device, our decoding accuracies suggest that the Emotiv can measure at least some true neurological signal, even if this signal is deeply mixed with noise.  These results suggest that the Emotiv may be most useful when used as a platform for rapidly prototyping EEG BCI experiments where classification accuracy is non--essential, providing early feedback on experiment design.  Finally, this thesis attempted to test whether or not attentional neurofeedback derived from mental decoding could help users improve their performance on an attentional tasks.  The results we found did not show statistically significant evidence for such an effect.  
 
+\chapter{Future Work}	
+	
+		\begin{wrapfigure}{l}{0pt}
+	\centering
+	\includegraphics[width=3in]{insight}
+	\caption{The Emotiv Insight has five channels and uses gel electrodes.  Source: gagetify.com \label{insight}}
+	\end{wrapfigure}The Epoc Emotiv is an early link in what the author believes will be a long chain of inexpensive, portable EEG devices, and perhaps even in a broader landscape of portable neuroimaging technologies.  The Emotiv is a clunky, plastic headset that attaches to users' scalps via saline--solution--soaked electrode sponges that runs out of charge in two hours.  However, even today, portable EEG's are becoming sleeker, cheaper, and easier to use.  In 2010, \cite{Chi} developed wireless, non--contact EEG electrodes that can measure brainwaves through fabric or other insulation.  Many headsets available for consumers today, including a new device by the same company that created the Emotiv, are already selling EEG devices that use dry or gel electrodes, that can quickly be slipped over the user's head.  Additionally, companies like Texas Instruments have over the past few years developed integrated circuits designed specifically for the processing of biopotential signals\cite{ti}, making the hardware required for building biofeedback devices far more accessible.  Given the rise in low--power biopotential devices that have come to market in the past two years alone (\cite{microsoft}, \cite{openbci}, \cite{zeo}, \cite{melon}), the author believes that the technology to make neurofeedback devices ubiquitous is almost here.  The question, then, lies in how we will be able to transform raw brain data into meaningful applications for all of the brains that will use them.  This thesis explores the domain of neurofeedback for attention training, a question which has been studied for tens of years.  What more bizarre, and intriguing applications might neurofeedback one day come to provide?  Many more than one senior thesis could tackle.    
+
+	
+		
+	
+	
 \appendix
 
 \chapter{Neuromancer Software Stack}
